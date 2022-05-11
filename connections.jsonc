@@ -1,0 +1,16 @@
+{
+  "systems": {
+    "sgbox": {
+      "description": "Primary development box",
+      "ip": "sg.cloud.com",
+      "username": "alan3",
+      "privateKey": "~/.ssh/id_rsa"
+    },
+    "pm": {
+      "description": "Production box",
+      "ip": "pm.cloud.com",
+      "username": "datauser",
+      "password": "$ENVPASSWORD"
+    }
+  }
+}
