@@ -1,0 +1,13 @@
+{
+  // What is neat about autos, is that it will show notice (with LABEL content) when a NOTICE value changes from N to Y.
+  "auto": [
+    {
+      "name": "Users Disabled",
+      "description": "Get warned when a user profile gets disabled",
+      "systems": ["*all"], // run against all systems
+      "query": "SELECT AUTHORIZATION_NAME as ID, 'User ' || RTRIM(AUTHORIZATION_NAME) || ' has been disabled.' as LABEL, CASE WHEN STATUS = '*ENABLED' THEN 'N' ELSE 'Y' END as NOTICE FROM QSYS2.USER_INFO_BASIC",
+      // runs every minute
+      "frequency": "1m"
+    }
+  ]
+}

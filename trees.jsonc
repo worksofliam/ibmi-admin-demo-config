@@ -1,0 +1,18 @@
+{
+  // These are created in the tree view and run on user request
+
+  "trees": [
+    {
+      "name": "Users Disabled",
+      "description": "Find users who are disabled and signon date",
+      "systems": ["*all"], // run against all systems
+      "query": "SELECT AUTHORIZATION_NAME as LABEL, STATUS || ', signed on: ' || COALESCE(CHAR(PREVIOUS_SIGNON), 'never') as TEXT, CASE WHEN STATUS = '*ENABLED' THEN 'GREEN' ELSE 'RED' END as COLOR FROM QSYS2.USER_INFO_BASIC"
+    },
+    {
+      "name": "Find bad signon attempts", 
+      "description": "Find the largest tables in the database",
+      "systems": ["*all"], // run against all systems
+      "query": "SELECT AUTHORIZATION_NAME as LABEL, SIGN_ON_ATTEMPTS_NOT_VALID || ' attempts' as TEXT, CASE WHEN SIGN_ON_ATTEMPTS_NOT_VALID > 500 THEN 'RED' WHEN SIGN_ON_ATTEMPTS_NOT_VALID > 100 THEN 'ORANGE' ELSE 'GREEN' END as COLOR FROM QSYS2.USER_INFO WHERE SIGN_ON_ATTEMPTS_NOT_VALID > 0"
+    }
+  ]
+}

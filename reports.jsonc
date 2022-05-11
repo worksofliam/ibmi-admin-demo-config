@@ -1,0 +1,14 @@
+{
+  // Reports (spool files) are generated on every system and then show to the user in VS code, grouped by system
+
+  "reports": [
+    {
+      "name": "DSPUSRPRF QSECOFR",
+      "description": "Get QSECOFR information",
+      "systems": ["*all"], // run against all systems
+      "command": "DSPUSRPRF QSECOFR",
+      "librarylist": ["QSYS2"],
+      "highlight": "*DISABLED" //Highlight the system if resulting spool contains this string?
+    }
+  ]
+}
